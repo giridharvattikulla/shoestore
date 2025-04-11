@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sabrina 2 'Stronger Than Gold'</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .left-column {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .main-image {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .thumbnail-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+
+      .thumbnail-row img {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+
+      .right-column {
+        flex: 1;
+        padding: 0 30px;
+        min-width: 300px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .price {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      .size-label {
+        font-weight: bold;
+        margin-top: 20px;
+        display: block;
+      }
+
+      .sizes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .size {
+        border: 1px solid #aaa;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .size:hover {
+        background-color: #f0f0f0;
+      }
+
+      .add-to-bag {
+        margin-top: 25px;
+        background-color: black;
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .description {
+        margin-top: 40px;
+        line-height: 1.6;
+      }
+
+      .details {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .right-column {
+          padding: 20px 0;
+        }
+      }
+      .review-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 24px;
+        background-color: #111;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .review-btn:hover {
+        background-color: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-column">
+        <img
+          src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/704cc97f-73ad-40ce-8799-8ab7aaae3f3f/SABRINA+2++NRG+EP.png"
+          alt="Main Shoe"
+          class="main-image"
+        />
+        <div class="thumbnail-row">
+          <img
+            src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/9123cea6-1566-481b-954c-a241b377caa9/SABRINA+2++NRG+EP.png"
+            alt=""
+          />
+          <img
+            src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8eaaefed-a978-4a5a-94b0-c7d22d87efcc/SABRINA+2++NRG+EP.png"
+            alt=""
+          />
+          <img
+            src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2ba8d242-ca30-46a6-90e3-da9063e50fe1/SABRINA+2++NRG+EP.png"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="right-column">
+        <h1>Sabrina 2 'Stronger Than Gold' EP</h1>
+        <p class="price">MRP: ₹12,295.00</p>
+
+        <button class="add-to-bag">Add to Bag</button>
+
+        <div class="description">
+          <p>
+            Sabrina Ionescu's success is no secret. Her game is based on living
+            in the gym, getting in rep after rep to perfect her craft. The
+            Sabrina 2 sets you up to do more, so you're ready to go when it's
+            game time.
+          </p>
+          <p>
+            Our newest Cushlon foam helps keep you fresh, Air Zoom cushioning
+            adds pop and sticky traction helps you create that next-level
+            distance.
+          </p>
+          <p>
+            This version celebrates the unbreakable bond Sabrina shares with her
+            family, giving you traction for outdoor courts.
+          </p>
+        </div>
+
+        <div class="details">
+          <p><strong>Colour:</strong> Rattan/Khaki/Sail/Metallic Gold</p>
+          <p><strong>Style:</strong> HF1798-200</p>
+          <p><strong>Origin:</strong> Vietnam</p>
+        </div>
+        <div>
+          <a href="{% url 'review' %}" class="review-btn">Submit a Review</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Review</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .review-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background-color: #111;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #444;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .review {
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+
+    .review p {
+      margin: 5px 0;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="review-container">
+    <h2>Submit Your Review</h2>
+    <form id="reviewForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="number" name="rating" min="1" max="5" placeholder="Rating (1 to 5)" required />
+      <textarea name="comment" placeholder="Your Comment" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <h3>Average Rating: <span id="avgRating">0</span> / 5</h3>
+    <div id="avgStars" class="stars">☆☆☆☆☆</div>
+
+    <h3>Customer Reviews</h3>
+    <div id="reviewsList"></div>
+
+    <a href="#" class="back-link">← Back to All Reviews</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('reviewForm');
+    const reviewsList = document.getElementById('reviewsList');
+    const avgRatingEl = document.getElementById('avgRating');
+    const avgStarsEl = document.getElementById('avgStars');
+
+    const reviews = [];
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = form.elements['name'].value;
+      const email = form.elements['email'].value;
+      const rating = parseInt(form.elements['rating'].value);
+      const comment = form.elements['comment'].value;
+
+      const review = { name, email, rating, comment };
+      reviews.push(review);
+
+      form.reset();
+      updateReviews();
+    });
+
+    function updateReviews() {
+      reviewsList.innerHTML = '';
+      let total = 0;
+
+      reviews.forEach(r => {
+        total += r.rating;
+
+        const reviewEl = document.createElement('div');
+        reviewEl.classList.add('review');
+        reviewEl.innerHTML = `
+          <p><strong>${r.name}</strong></p>
+          <p class="stars">${'⭐'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</p>
+          <p>${r.comment}</p>
+        `;
+        reviewsList.appendChild(reviewEl);
+      });
+
+      const avg = (total / reviews.length).toFixed(1);
+      avgRatingEl.textContent = avg;
+      const fullStars = Math.round(avg);
+      avgStarsEl.textContent = '⭐'.repeat(fullStars) + '☆'.repeat(5 - fullStars);
+    }
+  </script>
+
+</body>
+</html>

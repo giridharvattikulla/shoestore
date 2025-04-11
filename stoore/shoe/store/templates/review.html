@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Review</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .review-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background-color: #111;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #444;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .review {
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+
+    .review p {
+      margin: 5px 0;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="review-container">
+    <h2>Submit Your Review</h2>
+    <form id="reviewForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="number" name="rating" min="1" max="5" placeholder="Rating (1 to 5)" required />
+      <textarea name="comment" placeholder="Your Comment" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <h3>Average Rating: <span id="avgRating">0</span> / 5</h3>
+    <div id="avgStars" class="stars">☆☆☆☆☆</div>
+
+    <h3>Customer Reviews</h3>
+    <div id="reviewsList"></div>
+
+    <a href="#" class="back-link">← Back to All Reviews</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('reviewForm');
+    const reviewsList = document.getElementById('reviewsList');
+    const avgRatingEl = document.getElementById('avgRating');
+    const avgStarsEl = document.getElementById('avgStars');
+
+    const reviews = [];
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = form.elements['name'].value;
+      const email = form.elements['email'].value;
+      const rating = parseInt(form.elements['rating'].value);
+      const comment = form.elements['comment'].value;
+
+      const review = { name, email, rating, comment };
+      reviews.push(review);
+
+      form.reset();
+      updateReviews();
+    });
+
+    function updateReviews() {
+      reviewsList.innerHTML = '';
+      let total = 0;
+
+      reviews.forEach(r => {
+        total += r.rating;
+
+        const reviewEl = document.createElement('div');
+        reviewEl.classList.add('review');
+        reviewEl.innerHTML = `
+          <p><strong>${r.name}</strong></p>
+          <p class="stars">${'⭐'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</p>
+          <p>${r.comment}</p>
+        `;
+        reviewsList.appendChild(reviewEl);
+      });
+
+      const avg = (total / reviews.length).toFixed(1);
+      avgRatingEl.textContent = avg;
+      const fullStars = Math.round(avg);
+      avgStarsEl.textContent = '⭐'.repeat(fullStars) + '☆'.repeat(5 - fullStars);
+    }
+  </script>
+
+</body>
+</html>
